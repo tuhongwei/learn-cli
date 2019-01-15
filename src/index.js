@@ -10,7 +10,7 @@ commander.version(version)
 const [todo = ''] = commander.args;
 
 if(existsSync(resolve(__dirname, `command/${todo}.js`))) {
-	require(`../command/${todo}.js`);
+	require(`./command/${todo}.js`);
 }else {
 	console.log(
 	    `
