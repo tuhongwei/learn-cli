@@ -1,5 +1,6 @@
 import request from './request';
 import { orgName } from '../../config';
+import download from 'download-git-repo'
 
 class Git {
 	constructor() {
@@ -14,8 +15,13 @@ class Git {
 	getProjectUrl() {
 
 	}
-	downloadProject() {
-
+	downloadProject({ repo, version, repoPath }) {
+		return new Promise((resolve, reject) => {
+	        download(`${this.orgName}/${repo}#${version}`, repoPath, (err) => {
+	        if (err) reject(err);
+	        resolve(true);
+	        });
+	    });
 	}
 }
 export default Git;
